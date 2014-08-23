@@ -6,11 +6,15 @@ class TextrequestController < ApplicationController
   def create
     from_number = request[:From]
     puts "From number is #{from_number}"
+    session[:body] = params[:Body]
+    render plain: "You sent me #{session[:body]}"
+
+
+=begin
     @message = @client.account.messages.create({:to => from_number,
                                                 :from => "+14043416358",
                                                 :body => "Yes it works!"})
-
-    render plain: "OK"
+=end
   end
 
   private
