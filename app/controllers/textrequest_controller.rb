@@ -13,7 +13,7 @@ class TextrequestController < ApplicationController
 
     if message.length == 12
       #session[:patient] = Patient.find_by_identifier(message)
-      response = "New Patient: #{session[:patient].firstname} #{session[:patient].lastname}"
+      #response = "New Patient: #{session[:patient].firstname} #{session[:patient].lastname}"
     elsif message == "prescriptions"
       #look up prescriptions
       response = ""
@@ -22,7 +22,7 @@ class TextrequestController < ApplicationController
       response = ""
     end
 
-    render plain: response
+    #render plain: response
 
   end
 
