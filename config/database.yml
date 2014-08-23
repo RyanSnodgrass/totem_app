@@ -8,6 +8,8 @@ default: &default
   adapter: postgresql
   host: localhost
   pool: 5
+  username: <%= ENV["POSTGRESAPP_USERNAME"] %>
+  password: <%= ENV["POSTGRESAPP_PASSWORD"] %>
   timeout: 5000
 
 development:
