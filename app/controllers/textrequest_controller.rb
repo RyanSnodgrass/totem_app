@@ -4,17 +4,24 @@ class TextrequestController < ApplicationController
   before_action :twilio_client
 
   def create
-    from_number = request[:From]
-    puts "From number is #{from_number}"
-    session[:body] = params[:Body]
-    render plain: "You sent me #{session[:body]}"
+    #message is the body of the text
+    message = params[:Body]
+    #from_number is where it came from
+    from_number = params[:From]
 
+    if message.length == 12
+      session[:patient] = Patient.find_by_identifier(message)
+      response = "New Patient: #{session[:patient].firstname} #{session[:patient].lastname}"
+    elsif message == "prescriptions"
+      #look up prescriptions
+      response = ""
+    elsif message == "whatever"
+      #look up whatever
+      response = ""
+    end
 
-=begin
-    @message = @client.account.messages.create({:to => from_number,
-                                                :from => "+14043416358",
-                                                :body => "Yes it works!"})
-=end
+    render plain: response
+
   end
 
   private
@@ -24,3 +31,9 @@ class TextrequestController < ApplicationController
   end
 
 end
+
+=begin
+    @message = @client.account.messages.create({:to => from_number,
+                                                :from => "+14043416358",
+                                                :body => "Yes it works!"})
+=end
