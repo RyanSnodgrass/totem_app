@@ -1,0 +1,4 @@
+class TextrequestController < ApplicationController
+
+
+end
