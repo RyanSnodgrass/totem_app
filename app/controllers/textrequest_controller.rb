@@ -8,9 +8,11 @@ class TextrequestController < ApplicationController
     message = params[:Body]
     #from_number is where it came from
     from_number = params[:From]
+    response = "this works"
+    render plain: response
 
     if message.length == 12
-      session[:patient] = Patient.find_by_identifier(message)
+      #session[:patient] = Patient.find_by_identifier(message)
       response = "New Patient: #{session[:patient].firstname} #{session[:patient].lastname}"
     elsif message == "prescriptions"
       #look up prescriptions
