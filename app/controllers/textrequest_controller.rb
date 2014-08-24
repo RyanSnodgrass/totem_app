@@ -10,12 +10,12 @@ class TextrequestController < ApplicationController
     unique_input = message_params.first
     #from_number is where it came from
     session[:patient_record]=Patient.where(:unique_id => unique_input).take
-    case message_params
+    case 
     when message.length == 1
       if !session[:patient_record]
         response="no patient found"
       else
-        response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].last_name}"
+        response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].first_name}"
       end 
 =begin phase 2
     else
