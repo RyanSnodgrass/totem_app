@@ -5,9 +5,38 @@ class TextrequestController < ApplicationController
 
   def create
     #message is the body of the text
-    message = params[:Body]
-    #from_number is where it came from
+    message_params = params[:Body].split(" ")
     from_number = params[:From]
+    unique_input = message_params.first
+    #from_number is where it came from
+    session[:patient_record]=Patient.where(:unique_id => unique_input).take
+    case message_params
+    when message.length == 1
+      if !session[:patient_record]
+        response="no patient found"
+      else
+        response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].last_name}"
+      end 
+=begin phase 2
+    else
+      if message.length == 2
+        if !session[:patient_record]
+        response="no patient found"
+      elsif message.last == "D"
+        response="Diagnosis for #{session[:patient_record].last_name},#{session[:patient_record].last_name}: #{session[:patient_record].diagnoses}"
+      elsif message.last == "M"
+        response="Medications for #{session[:patient_record].last_name},#{session[:patient_record].last_name}: #{session[:patient_record].medications}"
+      end 
+    end
+=end
+    end
+    
+
+
+
+
+
+    if{message == }
     response = "this works"
     render plain: response
 
