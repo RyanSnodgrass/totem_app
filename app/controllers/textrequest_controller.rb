@@ -25,13 +25,13 @@ class TextrequestController < ApplicationController
         session[:patient_record].diagnoses.each do |diagnosis|
         dx_list<<diagnosis.name
         end
-        response="Diagnosis for #{session[:patient_record].last_name},#{session[:patient_record].first_name}: #{dx_list.join(" ")}"
+        response="Diagnosis for #{session[:patient_record].last_name},#{session[:patient_record].first_name}: #{dx_list.join(", ")}"
       elsif message_params.last == "M"
         meds_list = Array.new
         session[:patient_record].medications.each do |med|
         meds_list<<med.name
         end
-        response="Medications for #{session[:patient_record].last_name},#{session[:patient_record].first_name}: #{meds_list.join(" ")}"
+        response="Medications for #{session[:patient_record].last_name},#{session[:patient_record].first_name}: #{meds_list.join(", ")}"
       end 
     
     else 
