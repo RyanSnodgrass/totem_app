@@ -18,7 +18,9 @@ class TextrequestController < ApplicationController
         response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].first_name}"
       end 
     end
+    render plain: response
   end
+
 =begin phase 2
     else
       if message_params.length == 2
@@ -37,7 +39,6 @@ class TextrequestController < ApplicationController
 
     if{message == }
     response = "this works"
-    render plain: response
 
     if message.length == 12
       #session[:patient] = Patient.find_by_identifier(message)
