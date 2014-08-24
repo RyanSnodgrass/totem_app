@@ -17,6 +17,8 @@ class TextrequestController < ApplicationController
       else
         response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].first_name}"
       end 
+    end
+  end
 =begin phase 2
     else
       if message.length == 2
@@ -29,12 +31,9 @@ class TextrequestController < ApplicationController
       end 
     end
 =end
-    end
     
 
-
-
-
+=begin
 
     if{message == }
     response = "this works"
@@ -50,10 +49,9 @@ class TextrequestController < ApplicationController
       #look up whatever
       response = ""
     end
+=end
 
     #render plain: response
-
-  end
 
   private
 
