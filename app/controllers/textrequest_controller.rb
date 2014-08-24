@@ -17,22 +17,22 @@ class TextrequestController < ApplicationController
       else
         response="Patient found: #{session[:patient_record].last_name},#{session[:patient_record].first_name}"
       end 
-    end
-    render plain: response
-  end
-
-=begin phase 2
-    else
-      if message_params.length == 2
-        if !session[:patient_record]
+    when message_params.length == 2
+      if !session[:patient_record]
         response="no patient found"
       elsif message_params.last == "D"
         response="Diagnosis for #{session[:patient_record].last_name},#{session[:patient_record].last_name}: #{session[:patient_record].diagnoses}"
       elsif message_params.last == "M"
         response="Medications for #{session[:patient_record].last_name},#{session[:patient_record].last_name}: #{session[:patient_record].medications}"
       end 
+    
+    else 
+
+      response="invalid input"
+    
     end
-=end
+    render plain: response
+end
     
 
 =begin
